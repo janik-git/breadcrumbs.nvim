@@ -35,6 +35,7 @@ M.winbar_filetype_exclude = {
 
 M.get_filename = function()
   local filename = vim.fn.expand "%:t"
+  local directory = vim.fn.expand "%:p:h:t"
   local extension = vim.fn.expand "%:e"
   local f = require "breadcrumbs.utils"
 
@@ -74,7 +75,7 @@ M.get_filename = function()
       file_icon = ""
     end
 
-    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#WinBar#" .. filename .. "%*"
+    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#WinBar#" .. directory .. "/" .. filename .. "%*"
   end
 end
 
